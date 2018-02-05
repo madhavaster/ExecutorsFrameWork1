@@ -2,21 +2,17 @@ package com.madhav;
 
 import java.util.concurrent.TimeUnit;
 
-public class FirstWay {
+public class SecondWay {
 	public static void main(String[] args) {
-		/*FirstTask ft = new FirstTask();
-		ft.start();*/
 		System.out.println("main thread started::::"+Thread.currentThread().getName());
-		new FirstTask();
-		new FirstTask();
+		new SecondTask().start();
+		Thread t = new SecondTask();
+		t.start();
 		System.out.println("main thread ended::::"+Thread.currentThread().getName());
 	}
 }
 
-class FirstTask extends Thread{
-	FirstTask(){
-		this.start();
-	}
+class SecondTask extends Thread{
 	@Override
 	public void run() {
 		for(int i=1;i<=10;i++) {
